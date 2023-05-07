@@ -1,3 +1,3 @@
-# to_do_app
+# Task management application
 
-A new Flutter project.
+Only the interfaces currently contain it, and it will be stored later and completed in full
