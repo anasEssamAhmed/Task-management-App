@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/view/screen/AddTask.dart';
-import 'package:to_do_app/view/screen/Home.dart';
-import 'package:to_do_app/view/screen/Profile.dart';
-import 'package:to_do_app/view/screen/SignIn.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_app/controller/task_provider.dart';
+import 'package:to_do_app/model/database.dart';
 import 'package:to_do_app/view/screen/splash.dart';
 
-void main() {
-  runApp(MaterialApp(home: SplashPage()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DatabaseHelper.dp.initDP();
+  runApp(ChangeNotifierProvider<TaskProvider>(
+      create: (BuildContext context) {
+        return TaskProvider();
+      },
+      child: MaterialApp(home: SplashPage())));
 }

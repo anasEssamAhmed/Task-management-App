@@ -1,23 +1,13 @@
-
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:to_do_app/view/screen/SignIn.dart';
+import 'package:provider/provider.dart';
+import '../../controller/task_provider.dart';
 
-class SplashPage extends StatefulWidget {
-  @override
-  State<SplashPage> createState() => _SplashPageState();
-}
+class SplashPage extends StatelessWidget {
 
-class _SplashPageState extends State<SplashPage> {
-  @override
-  void initState() {
-    super.initState();
-    // Navigate to the login screen after 2 seconds
-    Timer(Duration(seconds: 2), () => Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginPage())));
-  }
   @override
   Widget build(BuildContext context) {
+    // navigate to login page
+    Provider.of<TaskProvider>(context , listen: false).navigateToLoginPage(context);
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -30,7 +20,7 @@ class _SplashPageState extends State<SplashPage> {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               Icon(
                 Icons.check_circle_outline,
                 color: Colors.white,
